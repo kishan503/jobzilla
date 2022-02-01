@@ -1,0 +1,377 @@
+{% load static %}
+<html>
+
+<!-- Mirrored from gambolthemes.net/workwise-new/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Nov 2021 04:58:35 GMT -->
+<head>
+<meta charset="UTF-8">
+<title>Jobzilla User Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="{% static 'company/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'company/lib/slick/slick.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'company/lib/slick/slick-theme.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/line-awesome.css' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/line-awesome-font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{%static 'company/css/responsive.css' %}">
+</head>
+<body>
+<div class="wrapper">
+<header>
+<div class="container">
+<div class="header-data">
+<nav>
+<ul>
+<img src="{% static 'company/images/123456.png' %}" style="height:7%;width:25%;" alt="">
+<li>
+<a href="{% url 'home' %}" title="">
+<span><img src="{% static 'company/images/icon1.png' %}" alt=""></span>
+My Profile
+</a>
+</li>
+<li>
+<a href="{% url 'companies' %}" title="">
+<span><img src="{% static 'company/images/icon2.png' %}" alt=""></span>
+Companies
+</a>
+</li>
+<li>
+<a href="{% url 'clients' %}" title="">
+<span><img src="{% static 'company/images/icon4.png' %}" alt=""></span>
+Users
+</a>
+</li>
+<li>
+    <a href="#" title="" class="not-box-openm">
+    <span><img src="{% static 'company/images/icon6.png' %}" alt=""></span>
+    Messages
+    </a>
+    <div class="notification-box msg" id="message">
+    <div class="nott-list">
+    <div class="notfication-details">
+    <div class="notification-info">
+    <h3><a href="messages.html" title="">No Messages</a></h3>
+    </div>
+    </div>
+    </div>
+    </div>
+<li>
+    <a href="#" title="" class="not-box-open">
+    <span><img src="{% static 'company/images/icon7.png' %}" alt=""></span>
+    Notification
+    </a>
+    <div class="notification-box noti" id="notification">
+    <div class="nott-list">
+    <div class="notfication-details">
+    <div class="notification-info">
+    <h3><a href="#" title="">No Notifications</h3>
+    </div>
+    </div>
+    </div>
+    </div>
+</li>
+</ul>
+</nav>
+<div class="menu-btn">
+<a href="#" title=""><i class="fa fa-bars"></i></a>
+</div>
+<div class="user-account">
+<div class="user-info">
+    <h1 style="color:white;"><u>Settings</u></h1>
+    <i class="la la-Cog"></i>
+</div>
+<div class="user-account-settingss">
+
+<ul class="us-links">
+<li><a href="{% url 'client-profile-settings' %}" title="">Account Setting</a></li>
+<li><a href="#" title="">Privacy</a></li>
+<li><a href="#" title="">Faqs</a></li>
+<li><a href="#" title="">Terms & Conditions</a></li>
+</ul>
+<h3 class="tc"><a href="{% url 'client-logout' %}" title="">Logout</a></h3>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+{% block content %}
+
+<section class="cover-sec">
+<img src="{{clid.client_cover.url}}" style="height:50%; width:100%;" alt="">
+</section>
+<main>
+<div class="main-section">
+<div class="container">
+<div class="main-section-data">
+<div class="row">
+<div class="col-lg-3">
+<div class="main-left-sidebar">
+<div class="user_profile">
+<div class="user-pro-img">
+<img src="{{clid.client_logo.url}}" style="height:200px; width:200px;" alt="">
+</div>
+<div class="user_pro_status">
+<ul class="flw-status">
+{% comment %} <li>
+<span>Following</span>
+<b>34</b>
+</li>
+<li>
+<span>Followers</span>
+<b>155</b>
+</li> {% endcomment %}
+</ul>
+</div>
+<ul class="social_links">
+<li><a href="#" title=""><i class="fa fa-facebook-square"></i> Http://www.facebook.com/john...</a></li>
+<li><a href="#" title=""><i class="fa fa-twitter"></i> Http://www.Twitter.com/john...</a></li>
+<li><a href="#" title=""><i class="fa fa-instagram"></i> Http://www.instagram.com/john...</a></li>
+<li><a href="#" title=""><i class="fa fa-youtube"></i> Http://www.youtube.com/john...</a></li>
+</ul>
+</div>
+<div class="suggestions full-width">
+<div class="sd-title">
+<h3>Suggestions</h3>
+<i class="la la-ellipsis-v"></i>
+</div>
+<div class="suggestions-list">
+<div class="view-more">
+<a href="#" title="">View More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="main-ws-sec">
+<div class="user-tab-sec">
+<h3>{{clid.client_name}}</h3>
+<div class="star-descp">
+<span>{{clid.client_qualification}}</span>
+<ul>
+<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star-half-o"></i></li>
+</ul>
+</div>
+<div class="tab-feed">
+<ul>
+<li data-tab="feed-dd" class="active">
+<a href="#" title="">
+<img src="{% static 'company/images/ic1.png' %}" alt="">
+<span>Feed</span>
+</a>
+</li>
+<li data-tab="info-dd">
+<a href="#" title="">
+<img src="{% static 'company/images/ic2.png' %}" alt="">
+<span>Info</span>
+</a>
+</li>
+<li data-tab="portfolio-dd">
+<a href="#" title="">
+<img src="{% static 'company/images/ic3.png' %}" alt="">
+<span>Portfolio</span>
+</a>
+</li>
+</ul>
+</div>
+</div> 
+<div class="product-feed-tab current" id="feed-dd">
+    <div class="posts-section">
+        {% for i in calljob %}
+    <div class="post-bar">
+    <div class="post_topbar">
+        <div class="usy-dt">
+            <img src="{{i.company_id.company_logo.url}}" alt="" style="height:70px; width:70px;">
+        <div class="usy-name">
+            <h3>{{i.company_id.company_name}}</h3>
+            <span><img src="{% static 'company/images/clock.png' %}" alt="">{{i.whenpublished}}</span>
+        </div>
+        </div>
+        <div class="ed-opts">
+            <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+            <ul class="ed-options">
+            <li><a href="#" title="">Edit Post</a></li>
+            <li><a href="#" title="">Unsaved</a></li>
+            <li><a href="#" title="">Unbid</a></li>
+            <li><a href="#" title="">Close</a></li>
+            <li><a href="#" title="">Hide</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="epi-sec">
+        </div>
+        <div class="job_descp">
+            <h3>{{i.post_title}}</h3>
+            <ul class="job-dt">
+            <li><a href="#" title="">{{i.job_type}}</a></li>
+            <li><span>Rs.{{i.job_salary}} / month</span></li>
+            <li><span>Required Employees: {{i.emp_requirement}}</span></li>
+            </ul>
+            <p>{{i.job_description}}<a href="#" title="">view more {{i.id}}</a></p>
+            <ul class="skill-tags">
+                {% for tag in i.mytags %}
+                    <li><a href="#" title="">{{tag}}</a></li>
+                {% endfor %}
+        </ul>
+        </div>
+        <div class="job-status-bar">
+            <ul class="like-com">
+            <li>
+            <a href="{% url 'like-jobpost' pk=i.id %}" ><i class="fas fa-heart"></i> Like </a>
+            {% comment %} <a href="{% url 'like-jobpost' %}" class="active"><i class="fas fa-heart"></i> Dislike</a> {% endcomment %}
+            <img src="{% static 'company/images/liked-img.png' %}" alt="">
+            <span>{{i.mylikes}}</span>
+            </li>
+            <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
+            </ul>
+            <a href="#"><i class="fas fa-eye"></i>Views 50</a>
+        </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+</div>
+
+<div class="product-feed-tab" id="info-dd">
+<div class="user-profile-ov">
+<h3>Overview</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
+</div>
+<div class="user-profile-ov st2">
+<h3>Experience</h3>
+<h4>Web designer</h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
+<h4>UI / UX Designer</h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id.</p>
+<h4>PHP developer</h4>
+<p class="no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
+</div>
+<div class="user-profile-ov">
+<h3>Qualifications</h3>
+<p>{{clid.client_qualification}}</p>
+</div>
+<div class="user-profile-ov">
+<h3>Address</h3>
+<p>{{clid.client_address}}</p>
+</div>
+<div class="user-profile-ov">
+<h3>Skills</h3>
+<ul>
+<li><a href="#" title="">{{clid.client_skills}}</a></li>
+</ul>
+</div>
+</div>
+<div class="product-feed-tab" id="portfolio-dd">
+    <div class="portfolio-gallery-sec">
+    <h3>Portfolio</h3>
+    <div class="gallery_pf">
+    <div class="row">
+    
+            {% for i in clall %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                <div class="gallery_pt">
+                <img src="{{i.picture.url}}" alt="">
+                <a href="#" title=""><img src="{% static 'company/images/all-out.png' %}" alt=""></a>
+                </div>
+                </div>
+            {% endfor %}
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<div class="col-lg-3">
+<div class="right-sidebar">
+<div class="message-btn">
+</div>
+
+<div class="widget widget-portfolio">
+    <div class="wd-heady">
+        <h3>Portfolio</h3>
+        <img src="{% static 'company/images/photo-icon.png' %}" alt="">
+    </div>
+    <div class="pf-gallery">
+    <ul>
+    <div class="gallery_pf">
+    <div class="row">
+    
+        {% for i in clall %}
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+            <div class="gallery_pt">
+                <img src="{{i.picture.url}}" style="height:auto; width:auto;">
+                <a href="#" title=""><img src="{% static 'company/images/all-out.png' %}" alt=""></a>
+            </div>
+            </div>
+        {% endfor %}
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+<footer>
+<div class="footy-sec mn no-margin">
+<div class="container">
+<ul>
+<li><a href="help-center.html" title="">Help Center</a></li>
+<li><a href="about.html" title="">About</a></li>
+<li><a href="#" title="">Privacy Policy</a></li>
+<li><a href="#" title="">Community Guidelines</a></li>
+<li><a href="#" title="">Cookies Policy</a></li>
+<li><a href="#" title="">Career</a></li>
+<li><a href="forum.html" title="">Forum</a></li>
+<li><a href="#" title="">Language</a></li>
+<li><a href="#" title="">Copyright Policy</a></li>
+</ul>
+<p><img src="{% static 'company/images/copy-icon2.png' %}" alt="">Copyright 2019</p>
+<img class="fl-rgt" src="images/logo2.png' %}" alt="">
+</div>
+</div>
+</footer>
+<div class="overview-box" id="create-portfolio">
+<div class="overview-edit">
+<h3>Create Portfolio</h3>
+<form>
+<input type="text" name="pf-name" placeholder="Portfolio Name">
+<div class="file-submit">
+<input type="file" name="file">
+</div>
+<div class="pf-img">
+<img src="{% static 'company/images/resources/np.png' %}" alt="">
+</div>
+<input type="text" name="website-url" placeholder="htp://www.example.com">
+<button type="submit" class="save">Save</button>
+<button type="submit" class="cancel">Cancel</button>
+</form>
+<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{% static 'company/lib/slick/slick.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'company/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'company/js/popper.js' %}"></script>
+<script type="text/javascript" src="{% static 'company/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'company/js/script.js' %}"></script>
+</body>
+
+<!-- Mirrored from gambolthemes.net/workwise-new/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Nov 2021 04:58:37 GMT -->
+</html>

@@ -1,0 +1,151 @@
+{% extends 'company/company-profile.html' %}
+{% load static %}
+
+
+{% block content %}
+<section >
+    <img src="{{cid.company_cover.url}}" style="width:100%;height:400px" alt="" >
+</section>
+<main>
+    <div class="main-section">
+    <div class="container">
+    <div class="main-section-data">
+    <div class="row">
+    <div class="col-lg-3">
+    <div class="main-left-sidebar">
+    <div class="user_profile">
+    <div class="user-pro-img">
+    <img src="{{cid.company_logo.url}}" style="width:auto; height:auto" alt="">
+    </div>
+    <div class="user_pro_status">
+    <ul class="flw-hr">
+    <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+    </ul>
+    <ul class="flw-status">
+    <li>
+    <span>Following</span>
+    <b>34</b>
+    </li>
+    <li>
+    <span>Followers</span>
+    <b>155</b>
+    </li>
+    </ul>
+    </div>
+    <ul class="social_links">
+    <li><a href="#" title=""><i class="la la-globe"></i> www.example.com</a></li>
+    <li><a href="#" title=""><i class="fa fa-facebook-square"></i> Http://www.facebook.com/john...</a></li>
+    <li><a href="#" title=""><i class="fa fa-twitter"></i> Http://www.Twitter.com/john...</a></li>
+    <li><a href="#" title=""><i class="fa fa-google-plus-square"></i> Http://www.googleplus.com/john...</a></li>
+    <li><a href="#" title=""><i class="fa fa-behance-square"></i> Http://www.behance.com/john...</a></li>
+    <li><a href="#" title=""><i class="fa fa-pinterest"></i> Http://www.pinterest.com/john...</a></li>
+    <li><a href="#" title=""><i class="fa fa-instagram"></i> Http://www.instagram.com/john...</a></li>
+    <li><a href="#" title=""><i class="fa fa-youtube"></i> Http://www.youtube.com/john...</a></li>
+    </ul>
+    </div>
+    
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="main-ws-sec">
+    <div class="user-tab-sec">
+    <h3>{{cid.company_name}}</h3>
+    <div class="star-descp">
+    <span>Established at {{cid.company_established}}</span>
+    <ul>
+    <li><i class="fa fa-star"></i></li>
+    <li><i class="fa fa-star"></i></li>
+    <li><i class="fa fa-star"></i></li>
+    <li><i class="fa fa-star"></i></li>
+    <li><i class="fa fa-star-half-o"></i></li>
+    </ul>
+    </div>
+    <div class="tab-feed">
+    <ul>
+    <li data-tab="info-dd" class="active">
+    <a href="#" title="">
+    <img src="{% static 'company/images/ic2.png' %}" alt="">
+    <span>Info</span>
+    </a>
+    </li>
+    <li data-tab="portfolio-dd">
+    <a href="#" title="">
+    <img src="{% static 'company/images/ic3.png' %}" alt="">
+    <span>Portfolio</span>
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+
+<div class="product-feed-tab current" id="info-dd">
+    <div class="user-profile-ov">
+        <h3><a href="#" title="" class="overview-open">Overview</a> </h3>
+        <p>{{cid.company_info}}</p>
+    </div>
+    <div class="user-profile-ov st2">
+        <h3><a href="#" title="" class="esp-bx-open">Establish Since </a></h3>
+        <span>{{cid.company_established}}</span>
+    </div>
+    <div class="user-profile-ov">
+        <h3><a href="#" title="" class="emp-open">Total Employees</a> </h3>
+        <span>17,048</span>
+    </div>
+    <div class="user-profile-ov">
+        <h3><a href="#" title="" class="lct-box-open">Location</a> </h3>
+        <p>{{cid.company_address}}</p>
+    </div>
+</div>
+    <div class="product-feed-tab" id="portfolio-dd">
+    <div class="portfolio-gallery-sec">
+    <h3>Portfolio</h3>
+    <div class="gallery_pf">
+    <div class="row">
+
+        {% for i in call %}
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+            <div class="gallery_pt">
+            <img src="{{i.picture.url}}" alt="">
+            <a href="#" title=""><img src="{% static 'company/images/all-out.png' %}" alt=""></a>
+            </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-3">
+    <div class="right-sidebar">
+    <div class="message-btn">
+    <a href="#" title=""><i class="fa fa-envelope"></i> Message</a>
+    </div>
+    <div class="widget widget-portfolio">
+    <div class="wd-heady">
+        <h3>Portfolio</h3>
+        <img src="{% static 'company/images/photo-icon.png' %}" alt="">
+    </div>
+    <div class="gallery_pf">
+    <div class="row">
+        {% for i in call %}
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+            <div class="gallery_pt">
+                <img src="{{i.picture.url}}" style="height:auto; width:auto;">
+                <a href="#" title=""><img src="{% static 'company/images/all-out.png' %}" alt=""></a>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</main>
+{% endblock %}

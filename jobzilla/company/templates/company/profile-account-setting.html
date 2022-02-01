@@ -1,0 +1,385 @@
+{% extends 'company/company-profile.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="profile-account-setting">
+<div class="container">
+<div class="account-tabs-setting">
+<div class="row">
+<div class="col-lg-3">
+<div class="acc-leftbar">
+<div class="nav nav-tabs" id="nav-tab" role="tablist">
+<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>Account Setting</a>
+<a class="nav-item nav-link" id="nav-picture-tab" data-toggle="tab" href="#nav-picture" role="tab" aria-controls="nav-picture" aria-selected="false"><i class="fa fa-lock"></i>Change Profile</a>
+<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>Change Password</a>
+<a class="nav-item nav-link" id="nav-portfolio-tab" data-toggle="tab" href="#nav-portfolio" role="tab" aria-controls="nav-portfolio" aria-selected="false"><i class="fa fa-lock"></i>Company Portfolio</a>
+<a class="nav-item nav-link" id="nav-companydetails-tab" data-toggle="tab" href="#nav-companydetails" role="tab" aria-controls="nav-companydetails" aria-selected="false"><i class="fa fa-user"></i>Company Details</a>
+
+<a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-group"></i>Requests</a>
+<a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#nav-privacy" role="tab" aria-controls="nav-privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>
+<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Deactivate Account</a>
+
+</div>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="tab-content" id="nav-tabContent">
+    {% comment %} <div class="tab-pane fade " id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
+    <div class="acc-setting">
+    <h3>Account Setting</h3>
+    <form>
+    <div class="notbar">
+    <h4>Notification Sound</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+    <div class="toggle-btn">
+    <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1"></label>
+    </div>
+    </div>
+    </div>
+    <div class="notbar">
+    <h4>Notification Email</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+    <div class="toggle-btn">
+    <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+    <label class="custom-control-label" for="customSwitch2"></label>
+    </div>
+    </div>
+    </div>
+    <div class="notbar">
+    <h4>Chat Message Sound</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+    <div class="toggle-btn">
+    <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch3">
+    <label class="custom-control-label" for="customSwitch3"></label>
+    </div>
+    </div>
+    </div>
+    <div class="save-stngs">
+    <ul>
+    <li><button type="submit">Save Setting</button></li>
+    <li><button type="submit">Restore Setting</button></li>
+    </ul>
+    </div>
+    </form>
+    </div>
+    </div> {% endcomment %}
+
+{% if s_msg %}
+    <div class="alert alert-success" role="alert">
+       {{s_msg}}
+    </div>
+{% endif %}
+
+{% if e_msg %}
+    <div class="alert alert-danger" role="alert">
+       {{e_msg}}
+    </div>
+{% endif %}
+
+<div class="tab-pane fade show active" id="nav-picture" role="tabpanel" aria-labelledby="nav-picture-tab">
+<div class="acc-setting">
+    <h3>Profile Setting</h3>
+        <form action="{% url 'upload-company-logo' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="cp-field">
+        <h5>Profile Pic</h5>
+        <div class="cpp-fiel">
+        <input type="file" name="company_logo" >
+       
+        </div>
+        </div>
+       
+        <div class="cp-field">
+            <h5>Cover Pic</h5>
+            <div class="cpp-fiel">
+            <input type="file" name="company_cover_pic" >
+           
+            </div>
+            </div>
+           
+        <div class="save-stngs pd2">
+        <ul>
+        <li><button type="submit">Save Picture</button></li>
+        
+        </ul>
+        </div>
+        </form>
+</div>
+</div>
+
+
+<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
+<div class="acc-setting">
+        <h3>Password Setting</h3>
+        <form action="{% url 'company-password-change' %}" method="POST">
+            {% csrf_token %}
+        <div class="cp-field">
+        <h5>Old Password</h5>
+        <div class="cpp-fiel">
+        <input type="text" name="old-password" placeholder="Old Password">
+        <i class="fa fa-lock"></i>
+        </div>
+        </div>
+        <div class="cp-field">
+        <h5>New Password</h5>
+        <div class="cpp-fiel">
+        <input type="text" name="new-password" placeholder="New Password">
+        <i class="fa fa-lock"></i>
+        </div>
+        </div>
+        <div class="cp-field">
+        <h5>Repeat Password</h5>
+        <div class="cpp-fiel">
+        <input type="text" name="repeat-password" placeholder="Repeat Password">
+        <i class="fa fa-lock"></i>
+        </div>
+        </div>
+        <div class="cp-field">
+        <h5><a href="{% url 'forgotpassword' %}" title="">Forgot Password?</a></h5>
+        </div>
+        <div class="save-stngs pd2">
+        <ul>
+        <li><button type="submit">Save Setting</button></li>
+        </ul>
+        </div>
+        </form>
+</div>
+</div>
+ 
+
+<div class="tab-pane fade" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-portfolio-tab">
+    <div class="acc-setting">
+            <h3>Portfolio Setting</h3>
+            <form action="{% url 'update-companyportfolio' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            <div class="cp-field">
+            <h5>Upload Portfolio</h5>
+            <div class="cpp-fiel">
+            <input type="file" name="portfolio">
+            
+            </div>
+            </div>
+            
+            <div class="save-stngs pd2">
+            <ul>
+            <li><button type="submit">Save Setting</button></li>
+            </ul>
+            </div>
+            </form>
+    </div>
+    </div>
+
+
+
+<div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+<div class="acc-setting">
+    <h3>Requests</h3>
+    <div class="requests-list">
+        <div class="request-details">
+        <div class="noty-user-img">
+            <img src="{% static 'company/images/resources/r-img1.png' %}" alt="">
+        </div>
+        <div class="request-info">
+            <h3>Jessica William</h3>
+            <span>Graphic Designer</span>
+        </div>
+        <div class="accept-feat">
+        <ul>
+            <li><button type="submit" class="accept-req">Accept</button></li>
+            <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+        </ul>
+        </div>
+        </div>
+        <div class="request-details">
+        <div class="noty-user-img">
+            <img src="{% static 'company/images/resources/r-img2.png' %}" alt="">
+        </div>
+        <div class="request-info">
+            <h3>John Doe</h3>
+            <span>PHP Developer</span>
+        </div>
+        <div class="accept-feat">
+        <ul>
+            <li><button type="submit" class="accept-req">Accept</button></li>
+            <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+        </ul>
+        </div>
+        </div>
+        <div class="request-details">
+        <div class="noty-user-img">
+            <img src="{% static 'company/images/resources/r-img3.png' %}" alt="">
+        </div>
+        <div class="request-info">
+            <h3>Poonam</h3>
+            <span>Wordpress Developer</span>
+        </div>
+        <div class="accept-feat">
+        <ul>
+            <li><button type="submit" class="accept-req">Accept</button></li>
+            <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+        </ul>
+        </div>
+        </div>
+        <div class="request-details">
+        <div class="noty-user-img">
+            <img src="{% static 'company/images/resources/r-img4.png' %}" alt="">
+        </div>
+        <div class="request-info">
+            <h3>Bill Gates</h3>
+            <span>C & C++ Developer</span>
+        </div>
+        <div class="accept-feat">
+            <ul>
+            <li><button type="submit" class="accept-req">Accept</button></li>
+            <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+        </ul>
+        </div>
+        </div>
+        <div class="request-details">
+        <div class="noty-user-img">
+        <img src="{% static 'company/images/resources/r-img5.png' %}" alt="">
+        </div>
+        <div class="request-info">
+        <h3>Jessica William</h3>
+        <span>Graphic Designer</span>
+        </div>
+        <div class="accept-feat">
+        <ul>
+        <li><button type="submit" class="accept-req">Accept</button></li>
+        <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+        </ul>
+        </div>
+        </div>
+        <div class="request-details">
+        <div class="noty-user-img">
+        <img src="{% static 'company/images/resources/r-img6.png' %}" alt="">
+        </div>
+        <div class="request-info">
+        <h3>John Doe</h3>
+        <span>PHP Developer</span>
+        </div>
+        <div class="accept-feat">
+        <ul>
+        <li><button type="submit" class="accept-req">Accept</button></li>
+        <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+</div>
+</div>
+
+<!--   div company details -->
+
+<div class="tab-pane fade" id="nav-companydetails" role="tabpanel" aria-labelledby="nav-companydetails-tab">
+    <div class="acc-setting">
+    <h3>Company Details Account</h3>
+    <form action="{% url 'company-details' %}" method="POST">
+        {% csrf_token %}
+        <div class="cp-field">
+            <h5>Email</h5>
+            <div class="cpp-fiel">
+            <input type="text" name="email" placeholder="Email" value="{{uid.email}}" readonly disabled>
+            <i class="fa fa-envelope"></i>
+            </div>
+        </div>
+        <div class="cp-field">
+            <h5>Company name</h5>
+            <div class="cpp-fiel">
+            <input type="text" name="company_name" placeholder="Company name"  value="{{cid.company_name}}">
+            <i class="fa fa-building"></i>
+            </div>
+        </div>
+        <div class="cp-field">
+            <h5>Established Year</h5>
+            <div class="cpp-fiel">
+            <input type="text" name="company_established" placeholder="Established Year">
+            <i class="fa fa-calendar"></i>
+            </div>
+        </div>
+
+        <div class="cp-field">
+            <h5>Company Information </h5>
+            <div class="cpp-fiel">
+            <input type="text" name="company_info" placeholder="Company Information">
+            <i class="fa fa-building"></i>
+            </div>
+        </div>
+        <div class="cp-field">
+            <h5>Company Address </h5>
+            <div class="cpp-fiel">
+            <input type="text" name="company_address" placeholder="Company Address">
+            <i class="fa fa-map-marker"></i>
+            </div>
+        </div>
+   
+    <div class="save-stngs pd3">
+        <ul>
+        <li><button type="submit">Save Setting</button></li>
+        </ul>
+    </div>
+    </form>
+    </div>
+    </div>
+    
+
+    
+<!--   div company details -->
+
+
+<div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
+<div class="acc-setting">
+<h3>Deactivate Account</h3>
+<form>
+<div class="cp-field">
+<h5>Email</h5>
+<div class="cpp-fiel">
+<input type="text" name="email" placeholder="Email">
+<i class="fa fa-envelope"></i>
+</div>
+</div>
+<div class="cp-field">
+<h5>Password</h5>
+<div class="cpp-fiel">
+<input type="password" name="password" placeholder="Password">
+<i class="fa fa-lock"></i>
+</div>
+</div>
+<div class="cp-field">
+<h5>Please Explain Further</h5>
+<textarea></textarea>
+</div>
+<div class="cp-field">
+<div class="fgt-sec">
+<input type="checkbox" name="cc" id="c4">
+<label for="c4">
+<span></span>
+</label>
+<small>Email option out</small>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id,</p>
+</div>
+<div class="save-stngs pd3">
+<ul>
+<li><button type="submit">Save Setting</button></li>
+<li><button type="submit">Restore Setting</button></li>
+</ul>
+</div>
+</form>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

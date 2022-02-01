@@ -1,0 +1,73 @@
+{% extends 'company/company-profile.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="profile-account-setting">
+<div class="container">
+<div class="account-tabs-setting">
+<div class="row">
+
+<div class="col-lg-12">
+<div class="tab-content" id="nav-tabContent">
+   
+
+{% if s_msg %}
+    <div class="alert alert-success" role="alert">
+       {{s_msg}}
+    </div>
+{% endif %}
+
+{% if e_msg %}
+    <div class="alert alert-danger" role="alert">
+       {{e_msg}}
+    </div>
+{% endif %}
+
+
+
+ 
+
+
+
+
+<div class="tab-pane fade show active" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+<div class="acc-setting">
+    <h3>Liked By :</h3>
+    {% for i in p_likes_by %}
+    <div class="requests-list">
+        <div class="request-details">
+            <div class="noty-user-img">
+                <img src="{{i.client_id.client_logo.url}}" style="height:35px; width:50px" alt="">
+            </div>
+            <div class="request-info">
+                <h3>{{i.client_id.client_name}}</h3>
+                <span>Graphic Designer</span>
+            </div>
+            <div class="accept-feat">
+            <ul>
+                <li><button type="submit" class="accept-req">Accept</button></li>
+                <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+        
+</div>
+</div>
+
+<!--   div company details -->
+
+<!--   div company details -->
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
